@@ -1,0 +1,11 @@
+Disallow: admin/
+Disallow: attachments/
+Disallow: cache/
+Disallow: content/
+Disallow: core/
+Disallow: css/
+Disallow: DOCUMENTS/
+Disallow: img/
+Disallow: js/
+Disallow: scripts/
+Disallow: templates/

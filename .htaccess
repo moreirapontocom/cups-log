@@ -1,0 +1,206 @@
+RewriteEngine On
+
+Options -Indexes
+
+RewriteBase /
+
+#RewriteCond %{HTTP_HOST} ^viaclique.com.br [nc]
+#RewriteRule (.*) http://viaclique.com.br/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([0-9A-Za-z-]+)\/?$                                       index.php?page=$1 [L]
+RewriteRule ^([0-9A-Za-z-]+)\/?([0-9A-Za-z-]+)\/?$                     index.php?page=$1&subpage=$2 [L]
+RewriteRule ^([0-9A-Za-z-]+)\/?([0-9A-Za-z-]+)\/?([0-9A-Za-z-]+)\/?$   index.php?page=$1&subpage=$2&subsubpage=$3 [L]
+
+
+#Continue
+ErrorDocument 100 /templates/html_errors/generic.html
+
+#Switching Protocols
+ErrorDocument 101 /templates/html_errors/generic.html
+
+#OK
+ErrorDocument 200 /templates/html_errors/generic.html
+
+#Created
+ErrorDocument 201 /templates/html_errors/generic.html
+
+#Accepted
+ErrorDocument 202 /templates/html_errors/generic.html
+
+#Partial
+ErrorDocument 203 /templates/html_errors/generic.html
+
+#No Content
+ErrorDocument 204 /templates/html_errors/generic.html
+
+#Reset Content
+ErrorDocument 205 /templates/html_errors/generic.html
+
+#Partial
+ErrorDocument 206 /templates/html_errors/generic.html
+
+#Multiple Choices
+ErrorDocument 300 /templates/html_errors/generic.html
+
+#Moved Permanently
+ErrorDocument 301 /templates/html_errors/generic.html
+
+#Moved Temporarily
+ErrorDocument 302 /templates/html_errors/generic.html
+
+#See Other
+ErrorDocument 303 /templates/html_errors/generic.html
+
+#Not Modified
+ErrorDocument 304 /templates/html_errors/generic.html
+
+#Use Proxy
+ErrorDocument 305 /templates/html_errors/generic.html
+
+#Bad Request
+ErrorDocument 400 /templates/html_errors/generic.html
+
+#Unauthorized
+ErrorDocument 401 /templates/html_errors/generic.html
+
+#Payment Required
+ErrorDocument 402 /templates/html_errors/generic.html
+
+#Forbidden
+ErrorDocument 403 /templates/html_errors/generic.html
+
+#Not Found
+ErrorDocument 404 /templates/html_errors/generic.html
+
+#Method Not Allowed
+ErrorDocument 405 /templates/html_errors/generic.html
+
+#Not Acceptable
+ErrorDocument 406 /templates/html_errors/generic.html
+
+#Proxy Authentication Required
+ErrorDocument 407 /templates/html_errors/generic.html
+
+#Request Time-Out
+ErrorDocument 408 /templates/html_errors/generic.html
+
+#Conflict
+ErrorDocument 409 /templates/html_errors/generic.html
+
+#Gone
+ErrorDocument 410 /templates/html_errors/generic.html
+
+#Length Required
+ErrorDocument 411 /templates/html_errors/generic.html
+
+#Precondition Failed
+ErrorDocument 412 /templates/html_errors/generic.html
+
+#Request Entity Too Large
+ErrorDocument 413 /templates/html_errors/generic.html
+
+#Request-URL Too Large
+ErrorDocument 414 /templates/html_errors/generic.html
+
+#Unsupported Media Type
+ErrorDocument 415 /templates/html_errors/generic.html
+
+#Server Error
+ErrorDocument 500 /templates/html_errors/generic.html
+
+#Not Implemented
+ErrorDocument 501 /templates/html_errors/generic.html
+
+#Bad Gateway
+ErrorDocument 502 /templates/html_errors/generic.html
+
+#Out of Resources
+ErrorDocument 503 /templates/html_errors/generic.html
+
+#Gateway Time-Out
+ErrorDocument 504 /templates/html_errors/generic.html
+
+#HTTP Version not supported
+ErrorDocument 505 /templates/html_errors/generic.html
+
+# Block ripers
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Custo [OR]
+RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR]
+RewriteCond %{HTTP_USER_AGENT} ^HMView [OR]
+RewriteCond %{HTTP_USER_AGENT} HTTrack [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR]
+RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR]
+RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR]
+RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^larbin [OR]
+RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR]
+RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR]
+RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR]
+RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR]
+RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR]
+RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR]
+RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR]
+RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebWhacker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Wget [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Widow [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Zeus
+RewriteRule ^.* - [F,L]

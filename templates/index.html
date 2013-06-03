@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CUPS Log</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link href="{$linkcss}bootstrap.css" rel="stylesheet">
+	{literal}
+		<style type="text/css">
+			body {padding-top: 60px;}
+			.caret {margin-top: 9px;}
+		</style>
+	{/literal}
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="{$linklibrary}jquery/jquery.tableSort.js"></script>
+
+	{literal}
+		<script type="text/javascript">
+			function ordenacao_listas(idTabela,coluna,tipo) { if ( tipo == '' ) { var tipo = ''; $('#' + idTabela).sortTable({onCol: coluna,keepRelationships: true,child: tipo}); } }
+			function open_reports() { $('#myModal').modal({backdrop: false}); }
+			$(function() { $('.typeahead').typeahead(); });
+		</script>
+	{/literal}
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="{$link}">CUPS Log</a>
+				<a href="javascript:void(null)" onclick="open_reports()" role="button" class="btn pull-right" data-toggle="modal"><i class="icon-print icons"></i> Relatórios</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<form method="post" action="{$linkscripts}reports.php" style="margin: 0;padding: 0;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Relatórios</h3>
+			</div>
+			<div class="modal-body">
+				<p>
+					<p>
+						Impressora<br />
+						<select name="printer">
+							<option value="*">Todas</option>
+							{foreach from=$printers item=item}
+								<option value="{$item.impressora}">{$item.impressora}</option>
+							{/foreach}
+						</select>
+					</p>
+					<p>
+						Digite o nome do usuário<br />
+						<input type="text" name="user" autocomplete="off" data-provide="typeahead" placeholder="Deixe em branco para todos" data-source='[{$users_list}]' />
+					</p>
+					<p>
+						Data<br />
+						De <input type="text" name="date_from" value="01/01/2000" class="input input-small" /> até <input type="text" name="date_to" value="{$date_today}" class="input input-small" />
+					</p>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-success">Filtrar</button>
+			</div>
+		</form>
+	</div>
+	<!-- /#myModal -->
+
+    <div class="container">
+      {include file=$main_page_content}
+    </div><!-- /container -->
+
+	<script type="text/javascript" src="{$linklibrary}bootstrap/bootstrap-transition.js"></script>
+	<script type="text/javascript" src="{$linklibrary}bootstrap/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="{$linklibrary}bootstrap/bootstrap-button.js"></script>
+	<script type="text/javascript" src="{$linklibrary}bootstrap/bootstrap-typeahead.js"></script>
+	<script type="text/javascript" src="{$linklibrary}bootstrap/holder.js"></script>
+</body>
+</html>

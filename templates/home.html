@@ -1,0 +1,52 @@
+{if $reports}
+	<h1>Relatório ({if $logs == 0}Nenhum registro{elseif $logs|@count == 1}1 registro{else}{$logs|@count} registros{/if})</h1>
+{else}
+	<h1>Log simples ({if $logs == 0}Nenhum registro{elseif $logs|@count == 1}1 registro{else}{$logs|@count} registros{/if})</h1>
+{/if}
+
+{if $reports}
+	<a href="{$linkscripts}clear_reports.php" class="btn btn-danger">Limpar resultados</a>
+{/if}
+
+<br /><br />
+
+<table class="table table-striped" id="tabela_logs">
+	<thead>
+		<tr>
+			{if !$reports}
+				<th>Código</th>
+			{/if}
+			<th><a href="javascript:void(null)" onclick="ordenacao_listas('tabela_logs',2)">Impressora <i class="caret"></i></a></th>
+			<th><a href="javascript:void(null)" onclick="ordenacao_listas('tabela_logs',3)">Usuário <i class="caret"></i></a></th>
+			{if !$reports}
+				<th>CUPS ID</th>
+			{/if}
+			<th><a href="javascript:void(null)" onclick="ordenacao_listas('tabela_logs',{if !$reports}4{else}5{/if})">Data impressão <i class="caret"></i></a></th>
+			{if !$reports}
+				<th>Pages</th>
+			{/if}
+			<th>IP</th>
+			<th>Nome documento</th>
+		</tr>
+	</thead>
+	<tbody id="fbody">
+		{foreach from=$logs item=item}
+			<tr>
+				{if !$reports}
+					<td>{$item.codigo}</td>
+				{/if}
+				<td>{$item.impressora}</td>
+				<td>{$item.usuario}</td>
+				{if !$reports}
+					<td>{$item.cupsid}</td>
+				{/if}
+				<td>{$item.data_impressao|date_format:"%d/%m/%Y %H:%M:%S"}</td>
+				{if !$reports}
+					<td>{$item.pages}</td>
+				{/if}
+				<td>{$item.ip}</td>
+				<td>{$item.nome_documento}</td>
+			</tr>
+		{/foreach}
+	</tbody>
+</table>
